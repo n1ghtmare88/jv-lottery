@@ -3,9 +3,16 @@ package core.basesyntax;
 import java.util.Random;
 
 public class Lottery {
+    private Random randomNumber;
+    private ColorSupplier randomColor;
+    private int bound = 101;
+
+    public Lottery() {
+        randomNumber = new Random();
+        randomColor = new ColorSupplier();
+    }
+
     public Ball getRandomBall() {
-        String color = new ColorSupplier().getRandomColor();
-        int number = new Random().nextInt(100);
-        return new Ball(color,number);
+        return new Ball(randomColor.getRandomColor(),randomNumber.nextInt(bound));
     }
 }
